@@ -19,14 +19,3 @@ jobs:
     - name: Run a one-line script
       run: echo "The PR number - ${{ github.event.pull_request.number }}"
       
-  publish: 
-    name: Version and Release Notes
-    runs-on: [self-hosted, linux, x64]
-    steps:
-    - uses: actions/checkout@v2
-    - name: release
-      uses: StuYarrow/publish-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        id: ${{ env.MAJOR_MINOR_VERSION }}${{ github.run_number }}
